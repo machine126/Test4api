@@ -6,10 +6,10 @@
       "value": "ST-AIP-APIM-NonProd"
     },
     "LinkedTemplatesBaseUrl": {
-      "value": "https://raw.githubusercontent.com/machine126/Test4api/main/"
+      "value": "https://raw.githubusercontent.com/machine126/Test4api/main"
     },
     "PolicyXMLBaseUrl": {
-      "value": "https://raw.githubusercontent.com/machine126/Test4api/main/policies/"
+      "value": "https://raw.githubusercontent.com/machine126/Test4api/main/policies"
     }
   },
   "resources": []
