@@ -6,10 +6,10 @@
       "value": "ST-AIP-APIM-NonProd"
     },
     "LinkedTemplatesBaseUrl": {
-      "value": "https://dev.azure.com/Cookie-Azure/testsohappy/_apis/sourceProviders/TfsGit/filecontents?repository=RESTAPIt&commitOrBranch=main&api-version=6.0-preview.1&path=%2F"
+      "value": "https://fb32zy63rbs3dser4jawomejbccrwubsvgg6edrs3qsoqak3w7ca@dev.azure.com/Cookie-Azure/testsohappy/_apis/sourceProviders/TfsGit/filecontents?repository=RESTAPIt&commitOrBranch=main&api-version=6.0-preview.1&path=%2F"
     },
     "PolicyXMLBaseUrl": {
-      "value": "https://dev.azure.com/Cookie-Azure/testsohappy/_apis/sourceProviders/TfsGit/filecontents?repository=RESTAPI&commitOrBranch=main&api-version=6.0-preview.1&path=%2Fpolicies%2F"
+      "value": "https://fb32zy63rbs3dser4jawomejbccrwubsvgg6edrs3qsoqak3w7ca@dev.azure.com/Cookie-Azure/testsohappy/_apis/sourceProviders/TfsGit/filecontents?repository=RESTAPI&commitOrBranch=main&api-version=6.0-preview.1&path=%2Fpolicies%2F"
     }
   },
   "resources": []
