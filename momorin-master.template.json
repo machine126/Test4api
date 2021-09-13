@@ -88,6 +88,13 @@
         "[resourceId('Microsoft.Resources/deployments', 'productsTemplate')]"
       ]
     },
+
+        "parameters": {
+          "ApimServiceName": {
+            "value": "[parameters('ApimServiceName')]"
+          }
+        }
+      },
       "name": "productAPIsTemplate",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2018-05-01",
