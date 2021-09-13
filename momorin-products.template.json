@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "type": "string"
+    },
+    "PolicyXMLBaseUrl": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "properties": {
+        "description": "NWC Public API gateway",
+        "terms": "",
+        "subscriptionRequired": false,
+        "state": "published",
+        "displayName": "NWC-test"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/test-product')]",
+      "type": "Microsoft.ApiManagement/service/products",
+      "apiVersion": "2021-01-01-preview"
+    },
+    {
+      "properties": {
+        "description": "Administrators is a built-in group. Its membership is managed by the system. Microsoft Azure subscription administrators fall into this group.",
+        "displayName": "Administrators",
+        "type": "system",
+        "builtIn": true
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/test-product/administrators')]",
+      "type": "Microsoft.ApiManagement/service/products/groups",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/products', parameters('ApimServiceName'), 'test-product')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/test-product-productPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/test-product/policy')]",
+      "type": "Microsoft.ApiManagement/service/products/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/products', parameters('ApimServiceName'), 'test-product')]"
+      ]
+    }
+  ]
+}

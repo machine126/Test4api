@@ -1,0 +1,231 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "type": "string"
+    },
+    "PolicyXMLBaseUrl": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "properties": {
+        "description": "",
+        "authenticationSettings": {
+          "subscriptionKeyRequired": false
+        },
+        "subscriptionKeyParameterNames": {
+          "header": "Ocp-Apim-Subscription-Key",
+          "query": "subscription-key"
+        },
+        "apiRevision": "1",
+        "isCurrent": true,
+        "subscriptionRequired": false,
+        "displayName": "blank test",
+        "path": "momorin",
+        "protocols": [
+          "https"
+        ]
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/blank-test')]",
+      "type": "Microsoft.ApiManagement/service/apis",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": []
+    },
+    {
+      "properties": {
+        "templateParameters": [
+          {
+            "name": "number",
+            "type": "",
+            "required": true,
+            "values": []
+          }
+        ],
+        "description": "",
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [
+          {
+            "statusCode": 200,
+            "description": "",
+            "headers": [],
+            "representations": [
+              {
+                "contentType": "application/json",
+                "sample": "{ \"sampleField\" : \"test\" }"
+              }
+            ]
+          }
+        ],
+        "displayName": "Index",
+        "method": "GET",
+        "urlTemplate": "/123/teach{number}"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/blank-test/index')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'blank-test')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/blank-test-index-operationPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/blank-test/index/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'blank-test', 'index')]"
+      ]
+    },
+    {
+      "properties": {
+        "templateParameters": [],
+        "description": "",
+        "request": {
+          "queryParameters": [],
+          "headers": [],
+          "representations": []
+        },
+        "responses": [],
+        "displayName": "testXml",
+        "method": "POST",
+        "urlTemplate": "/testXml"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/blank-test/testxml')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'blank-test')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/blank-test-testxml-operationPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/blank-test/testxml/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/operations/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis/operations', parameters('ApimServiceName'), 'blank-test', 'testxml')]"
+      ]
+    },
+    {
+      "properties": {
+        "value": "[concat(parameters('PolicyXMLBaseUrl'), '/blank-test-apiPolicy.xml')]",
+        "format": "rawxml-link"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/blank-test/policy')]",
+      "type": "Microsoft.ApiManagement/service/apis/policies",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'blank-test')]"
+      ]
+    },
+    {
+      "name": "[concat(parameters('ApimServiceName'), '/test-product/blank-test')]",
+      "type": "Microsoft.ApiManagement/service/products/apis",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": [
+        "[resourceId('Microsoft.ApiManagement/service/apis', parameters('ApimServiceName'), 'blank-test')]"
+      ]
+    },
+    {
+      "properties": {
+        "alwaysLog": "allErrors",
+        "loggerId": "/subscriptions/a0df87d6-5061-42c4-b9a8-cf59e0ab44a9/resourceGroups/APIM/providers/Microsoft.ApiManagement/service/momorin/loggers/insights-for-apim",
+        "httpCorrelationProtocol": "Legacy",
+        "verbosity": "verbose",
+        "logClientIp": true,
+        "sampling": {
+          "samplingType": "fixed",
+          "percentage": 100.0
+        },
+        "frontend": {
+          "request": {
+            "headers": [],
+            "body": {
+              "bytes": 0
+            }
+          },
+          "response": {
+            "headers": [],
+            "body": {
+              "bytes": 0
+            }
+          }
+        },
+        "backend": {
+          "request": {
+            "headers": [],
+            "body": {
+              "bytes": 0
+            }
+          },
+          "response": {
+            "headers": [],
+            "body": {
+              "bytes": 0
+            }
+          }
+        }
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/applicationinsights')]",
+      "type": "Microsoft.ApiManagement/service/diagnostics",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": []
+    },
+    {
+      "properties": {
+        "loggerId": "/subscriptions/a0df87d6-5061-42c4-b9a8-cf59e0ab44a9/resourceGroups/APIM/providers/Microsoft.ApiManagement/service/momorin/loggers/azuremonitor",
+        "verbosity": "information",
+        "logClientIp": true,
+        "sampling": {
+          "samplingType": "fixed",
+          "percentage": 100.0
+        },
+        "frontend": {
+          "request": {
+            "headers": [],
+            "body": {
+              "bytes": 0
+            }
+          },
+          "response": {
+            "headers": [],
+            "body": {
+              "bytes": 0
+            }
+          }
+        },
+        "backend": {
+          "request": {
+            "headers": [],
+            "body": {
+              "bytes": 0
+            }
+          },
+          "response": {
+            "headers": [],
+            "body": {
+              "bytes": 0
+            }
+          }
+        }
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/azuremonitor')]",
+      "type": "Microsoft.ApiManagement/service/diagnostics",
+      "apiVersion": "2021-01-01-preview",
+      "dependsOn": []
+    }
+  ]
+}
