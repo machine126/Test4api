@@ -26,7 +26,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), 'momorin-globalServicePolicy.template.json')]",
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/momorin-globalServicePolicy.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -47,7 +47,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), 'momorin-products.template.json')]",
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/momorin-products.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -68,7 +68,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), 'momorin-blank-test-api.template.json')]",
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/momorin-blank-test-api.template.json')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -88,7 +88,13 @@
         "[resourceId('Microsoft.Resources/deployments', 'productsTemplate')]"
       ]
     },
-
+    {
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/momorin-productAPIs.template.json')]",
+          "contentVersion": "1.0.0.0"
+        },
         "parameters": {
           "ApimServiceName": {
             "value": "[parameters('ApimServiceName')]"
