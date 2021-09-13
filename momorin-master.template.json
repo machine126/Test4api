@@ -47,27 +47,6 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), '/momorin-products.template.json')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "ApimServiceName": {
-            "value": "[parameters('ApimServiceName')]"
-          },
-          "PolicyXMLBaseUrl": {
-            "value": "[parameters('PolicyXMLBaseUrl')]"
-          }
-        }
-      },
-      "name": "productsTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
-      "dependsOn": []
-    },
-    {
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
           "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), ' /momorin-blank-test-api.template.json')]",
           "contentVersion": "1.0.0.0"
         },
