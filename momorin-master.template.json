@@ -88,19 +88,6 @@
         "[resourceId('Microsoft.Resources/deployments', 'productsTemplate')]"
       ]
     },
-    {
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(parameters('LinkedTemplatesBaseUrl'), 'momorin-productAPIs.template.json')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "ApimServiceName": {
-            "value": "[parameters('ApimServiceName')]"
-          }
-        }
-      },
       "name": "productAPIsTemplate",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2018-05-01",
