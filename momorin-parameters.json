@@ -6,10 +6,10 @@
       "value": "ST-AIP-APIM-NonProd"
     },
     "LinkedTemplatesBaseUrl": {
-      "value": "https://fb32zy63rbs3dser4jawomejbccrwubsvgg6edrs3qsoqak3w7ca@dev.azure.com/Cookie-Azure/testsohappy/_apis/sourceProviders/TfsGit/filecontents?repository=RESTAPIt&commitOrBranch=main&path=%2F"
+      "value": "https://raw.githubusercontent.com/machine126/Test4api/main/"
     },
     "PolicyXMLBaseUrl": {
-      "value": "https://fb32zy63rbs3dser4jawomejbccrwubsvgg6edrs3qsoqak3w7ca@dev.azure.com/Cookie-Azure/testsohappy/_apis/sourceProviders/TfsGit/filecontents?repository=RESTAPI&commitOrBranch=main&path=%2Fpolicies%2F"
+      "value": "https://raw.githubusercontent.com/machine126/Test4api/main/policies/"
     }
   },
   "resources": []
