@@ -1,0 +1,29 @@
+<!--
+    IMPORTANT:
+    - Policy elements can appear only within the <inbound>, <outbound>, <backend> section elements.
+    - Only the <forward-request> policy element can appear within the <backend> section element.
+    - To apply a policy to the incoming request (before it is forwarded to the backend service), place a corresponding policy element within the <inbound> section element.
+    - To apply a policy to the outgoing response (before it is sent back to the caller), place a corresponding policy element within the <outbound> section element.
+    - To add a policy position the cursor at the desired insertion point and click on the round button associated with the policy.
+    - To remove a policy, delete the corresponding policy statement from the policy document.
+    - Policies are applied in the order of their appearance, from the top down.
+-->
+<policies>
+	<inbound>
+		<rate-limit-by-key calls="10" renewal-period="60" counter-key="@(context.Subscription?.Key ?? "anonymous")" />
+		<set-header name="Ocp-Apim-Subscription-Key" exists-action="delete" />
+	</inbound>
+	<backend>
+		<forward-request />
+	</backend>
+	<outbound>
+		<!-- remove headers we don't want anyone outside the organisation to see -->
+		<set-header name="X-Powered-By" exists-action="delete" />
+		<set-header name="X-AspNet-Version" exists-action="delete" />
+		<!-- rewrite Host header - we don't want anyone outside the organisation to see the real Host value and we cannot actually remove it -->
+		<set-header name="Host" exists-action="override">
+			<value>host.sydneytrains.nsw.gov.au</value>
+		</set-header>
+	</outbound>
+	<on-error />
+</policies>
